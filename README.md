@@ -1,2 +1,2 @@
 # Internship
-Main Project
+Internship Project
