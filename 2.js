@@ -11,8 +11,16 @@ http.createServer(function (req, res) {
       var newpath = 'C:/Users/sushmithaj/Desktop/Inventory/' + files.filetoupload.name;
       fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
-        res.write('File uploaded and moved!');
-        res.end();
+        fs.readFile('./Uploaded.html', function(err, data) {
+    		if (err) 
+		    {
+      			res.writeHead(404, {'Content-Type': 'text/html'});
+      			return res.end("404 Not Found");
+    		} 
+    	res.writeHead(200, {'Content-Type': 'text/html'});
+    	res.write(data);
+   }); 
+        
       });
    });
   } 
@@ -29,4 +37,4 @@ http.createServer(function (req, res) {
     	res.write(data);
    }); 
  }
-}).listen(8080); 
+}).listen(8087); 
